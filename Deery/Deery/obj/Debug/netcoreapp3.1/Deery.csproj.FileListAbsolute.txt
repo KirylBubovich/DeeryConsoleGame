@@ -1,0 +1,13 @@
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\bin\Debug\netcoreapp3.1\Deery.exe
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\bin\Debug\netcoreapp3.1\Deery.deps.json
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\bin\Debug\netcoreapp3.1\Deery.runtimeconfig.json
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\bin\Debug\netcoreapp3.1\Deery.runtimeconfig.dev.json
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\bin\Debug\netcoreapp3.1\Deery.dll
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\bin\Debug\netcoreapp3.1\Deery.pdb
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\obj\Debug\netcoreapp3.1\Deery.csprojAssemblyReference.cache
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\obj\Debug\netcoreapp3.1\Deery.AssemblyInfoInputs.cache
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\obj\Debug\netcoreapp3.1\Deery.AssemblyInfo.cs
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\obj\Debug\netcoreapp3.1\Deery.csproj.CoreCompileInputs.cache
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\obj\Debug\netcoreapp3.1\Deery.dll
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\obj\Debug\netcoreapp3.1\Deery.pdb
+D:\SmallThings\Program studio\Deer C#\Deery\Deery\obj\Debug\netcoreapp3.1\Deery.genruntimeconfig.cache
