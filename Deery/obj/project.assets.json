@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SmallThings\\Program studio\\Deer C#\\Deery\\Deery\\Deery.csproj",
+      "projectUniqueName": "D:\\SmallThings\\ProgramStudio\\Deer C#\\Deery\\Deery.csproj",
       "projectName": "Deery",
-      "projectPath": "D:\\SmallThings\\Program studio\\Deer C#\\Deery\\Deery\\Deery.csproj",
+      "projectPath": "D:\\SmallThings\\ProgramStudio\\Deer C#\\Deery\\Deery.csproj",
       "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "D:\\SmallThings\\Program studio\\Deer C#\\Deery\\Deery\\obj\\",
+      "outputPath": "D:\\SmallThings\\ProgramStudio\\Deer C#\\Deery\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
