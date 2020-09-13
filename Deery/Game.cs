@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
 
 namespace Deery
@@ -14,10 +13,14 @@ namespace Deery
         static void Main(string[] args)
         {
             Deer deery = new Deer();
+            Obstacle obstacle = new Obstacle();
+            Random rand = new Random();
             decimal points = 0M;
+            bool game = true;
             StartGame(ref deery);
-            while (true)
+            while (game)
             {
+                
                 CatchKey(ref deery);
                 if (deery.IsJumping)
                 {
@@ -32,8 +35,14 @@ namespace Deery
                 deery.flag ^= 1;
                 deery.Clear();
                 ++points;
+                obstacle.Print(rand.Next(0, 1));
+                if(obstacle.Cur > 103 && obstacle.Cur <= 118 && deery.jumpingCounter < 4)
+                {
+                    game = false;
+                }
                 Thread.Sleep(50);
             }
+            GameOver(ref deery, points);
             Console.ReadKey();
         }
 
@@ -46,11 +55,16 @@ namespace Deery
             Console.Clear();
         }
 
+        public static void GameOver(ref Deer deery, decimal points)
+        {
+            Console.WriteLine($"Game over :(\t\t\t\tYour points, sir: {points-1}\t\t\t\t\t\tThanks for game!");
+        }
+
         public static void CatchKey(ref Deer deery)
         {
-            if (Console.KeyAvailable)
+            if (Console.KeyAvailable && !  deery.IsJumping)
             {
-                if(Convert.ToChar(_getch()) == ' ')
+                if (Convert.ToChar(_getch()) == ' ')
                 {
                     deery.IsJumping = true;
                     deery.IsUp = true;
