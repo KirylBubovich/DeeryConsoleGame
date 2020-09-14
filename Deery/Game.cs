@@ -10,7 +10,7 @@ namespace Deery
         [DllImport("msvcrt")]
         static extern int _getch();
         #endregion
-        static ConsoleColor[] colors = new ConsoleColor[]{ConsoleColor.White, ConsoleColor.Yellow, ConsoleColor.Cyan,
+        static readonly ConsoleColor[] colors = new ConsoleColor[]{ConsoleColor.White, ConsoleColor.Yellow, ConsoleColor.Cyan,
         ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Magenta};
         static void Main(string[] args)
         {
@@ -33,7 +33,7 @@ namespace Deery
                 }
                 Console.SetCursorPosition(0, 0);
                 deery.Print(false, points);
-                deery.flag ^= 1;
+                deery.Flag ^= 1;
                 deery.Clear();
                 ++points;
                 obstacle.Print();
@@ -56,7 +56,7 @@ namespace Deery
 
         public static void IsGameOver(ref Obstacle obstacle, ref Deer deery, ref bool game)
         {
-            if (obstacle.Cur > 103 && obstacle.Cur <= 118
+            if (obstacle.Cur > 105 && obstacle.Cur <= 118
                     &&
                     (deery.jumpingCounter < 3 || (deery.jumpingCounter == 3 && !deery.IsUp)))
             {

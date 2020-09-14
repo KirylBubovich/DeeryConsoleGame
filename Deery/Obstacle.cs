@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Deery
 {
@@ -14,10 +12,10 @@ namespace Deery
 
         public Obstacle()
         {
-            Cur = 0;
+            Cur = -100;
             Speed = 1.6;
             obstacle = new string[height];
-            for(int i = 0; i < height; ++i)
+            for (int i = 0; i < height; ++i)
             {
                 obstacle[i] = "▒";
             }
@@ -30,13 +28,13 @@ namespace Deery
             {
                 foreach (var item in obstacle)
                 {
-                    Console.SetCursorPosition(118 - (int)Cur, 19 + i);
-                    Console.WriteLine(item + ((Cur > 0) ? new string(' ', Math.Min((int)Cur, (int)Cur)) : ""));
+                    Console.SetCursorPosition(119 - (int)Cur, 19 + i);
+                    Console.WriteLine(item + ((Cur > 0) ? new string(' ', (int)Cur) : ""));
                     ++i;
                 }
             }
-            if(Cur < 119 - Speed)
-            Cur+=Speed;
+            if (Cur < 118 - Speed)
+                Cur += Speed;
             else
             {
                 Cur = -rand.Next(0, 100) * rand.NextDouble();

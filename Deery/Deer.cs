@@ -7,23 +7,23 @@ namespace Deery
     public class Deer
     {
         public StringBuilder[] Lines { get; set; }
-        public int flag { get; set; }
+        public int Flag { get; set; }
         public bool IsJumping { get; set; }
         public bool IsUp { get; set; }
         public int jumpingCounter = 0;
         private int count = 8;
-        private char c = '█', c1 = '■';
-        private string empty = new String(' ', 26);
-        private string pointsLine = new string(' ', 110);
-        private string ground = new string('▒', 120);
-        private int skip = 12  ;
+        private const char c = '█', c1 = '■';
+        private readonly string empty = new String(' ', 26);
+        private readonly string bigEmpty = new string(' ', 110);
+        private readonly string ground = new string('▒', 120);
+        private const int skip = 12  ;
         #region
         [DllImport("msvcrt")]
         static extern int _getch();
         #endregion
         public Deer()
         {
-            flag = 0;
+            Flag = 0;
             Lines = new StringBuilder[count];
             for (int i = 0; i < count; ++i)
             {
@@ -42,16 +42,12 @@ namespace Deery
 
         public void Print(bool isStart, decimal points)
         {
-            Console.WriteLine(pointsLine);
-            if (!isStart)
-            {
-                Console.WriteLine(pointsLine);
-            }
-            Console.WriteLine(pointsLine + points);
+            Console.WriteLine(bigEmpty + (isStart ? "" : '\n' + bigEmpty));
+            Console.WriteLine(bigEmpty + points);
             int _ = skip - jumpingCounter;
             for (int i = 0; i < _; ++i)
             {
-                Console.WriteLine(pointsLine);
+                Console.WriteLine(bigEmpty);
             }
             foreach (var item in Lines)
             {
@@ -59,7 +55,7 @@ namespace Deery
             }
             for (int i = 0; i < jumpingCounter; ++i)
             {
-                Console.WriteLine(pointsLine);
+                Console.WriteLine(bigEmpty);
             }
             Console.WriteLine(ground);
         }
@@ -74,20 +70,7 @@ namespace Deery
             {
                 Lines[6][i] = c;
             }
-            if (flag == 0)
-            {
-                Lines[7][5] = c;
-                Lines[7][7] = c;
-                Lines[7][10] = c;
-                Lines[7][12] = c;
-            }
-            else
-            {
-                Lines[7][6] = c;
-                Lines[7][8] = c;
-                Lines[7][11] = c;
-                Lines[7][13] = c;
-            }
+            PaintLegsWhenRunning();
         }
 
         public void Jumping()
@@ -107,25 +90,16 @@ namespace Deery
             for (int i = 2; i < 5; i++)
             {
                 Lines[5][i] = c1;
+                Lines[6][i] = c1;
             }
             for (int i = 5; i < 15; i++)
             {
                 Lines[5][i] = c;
+                Lines[6][i] = c;
             }
             for (int i = 15; i < 18; i++)
             {
                 Lines[5][i] = c1;
-            }
-            for (int i = 5; i < 15; i++)
-            {
-                Lines[6][i] = c;
-            }
-            for (int i = 2; i < 5; i++)
-            {
-                Lines[6][i] = c1;
-            }
-            for (int i = 15; i < 18; i++)
-            {
                 Lines[6][i] = c1;
             }
         }
@@ -148,6 +122,24 @@ namespace Deery
             Lines[3][15] = c;
             Lines[4][5] = c;
             Lines[4][12] = c;
+        }
+
+        private void PaintLegsWhenRunning()
+        {
+            if (Flag == 0)
+            {
+                Lines[7][5] = c;
+                Lines[7][7] = c;
+                Lines[7][10] = c;
+                Lines[7][12] = c;
+            }
+            else
+            {
+                Lines[7][6] = c;
+                Lines[7][8] = c;
+                Lines[7][11] = c;
+                Lines[7][13] = c;
+            }
         }
     }
 }
