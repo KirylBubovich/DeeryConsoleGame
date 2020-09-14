@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Deery
@@ -15,8 +16,11 @@ namespace Deery
         private string empty = new String(' ', 26);
         private string pointsLine = new string(' ', 110);
         private string ground = new string('▒', 120);
-        private int skip = 12;
-
+        private int skip = 12  ;
+        #region
+        [DllImport("msvcrt")]
+        static extern int _getch();
+        #endregion
         public Deer()
         {
             flag = 0;
@@ -94,6 +98,10 @@ namespace Deery
             {
                 IsJumping = false;
                 Clear();
+                while (Console.KeyAvailable)
+                {
+                    _getch();
+                }
             }
             PaintHead();
             for (int i = 2; i < 5; i++)

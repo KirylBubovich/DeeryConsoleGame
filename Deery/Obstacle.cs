@@ -6,36 +6,41 @@ namespace Deery
 {
     public class Obstacle
     {
-        public int Cur = 0;
+        public double Cur { get; set; }
+        public double Speed { get; set; }
         private int height = 4;
-        private string[] zero;
-        private string[] one;
+        private string[] obstacle;
+        private Random rand = new Random();
 
         public Obstacle()
         {
-            zero = new string[height];
-            one = new string[height];
+            Cur = 0;
+            Speed = 1.6;
+            obstacle = new string[height];
             for(int i = 0; i < height; ++i)
             {
-                zero[i] = "▒";
-                one[i] = "▒▒";
+                obstacle[i] = "▒";
             }
         }
 
-        public void Print(int kind)
+        public void Print()
         {
             int i = 0;
-            foreach (var item in kind == 0 ? zero : one)
+            if (Cur >= 0)
             {
-                Console.SetCursorPosition(119 - Cur, 19 + i);
-                Console.WriteLine(item + ((Cur != 0) ? new string(' ', Cur):""));
-                ++i;
+                foreach (var item in obstacle)
+                {
+                    Console.SetCursorPosition(118 - (int)Cur, 19 + i);
+                    Console.WriteLine(item + ((Cur > 0) ? new string(' ', Math.Min((int)Cur, (int)Cur)) : ""));
+                    ++i;
+                }
             }
-            if(Cur < 119)
-            ++Cur;
+            if(Cur < 119 - Speed)
+            Cur+=Speed;
             else
             {
-                Cur = 0;
+                Cur = -rand.Next(0, 100) * rand.NextDouble();
+                Speed += 0.1;
             }
         }
     }

@@ -10,6 +10,8 @@ namespace Deery
         [DllImport("msvcrt")]
         static extern int _getch();
         #endregion
+        static ConsoleColor[] colors = new ConsoleColor[]{ConsoleColor.White, ConsoleColor.Yellow, ConsoleColor.Cyan,
+        ConsoleColor.Green, ConsoleColor.Red, ConsoleColor.Magenta};
         static void Main(string[] args)
         {
             Deer deery = new Deer();
@@ -20,7 +22,6 @@ namespace Deery
             StartGame(ref deery);
             while (game)
             {
-                
                 CatchKey(ref deery);
                 if (deery.IsJumping)
                 {
@@ -35,12 +36,10 @@ namespace Deery
                 deery.flag ^= 1;
                 deery.Clear();
                 ++points;
-                obstacle.Print(rand.Next(0, 1));
-                if(obstacle.Cur > 103 && obstacle.Cur <= 118 && deery.jumpingCounter < 4)
-                {
-                    game = false;
-                }
+                obstacle.Print();
+                IsGameOver(ref obstacle, ref deery, ref game);
                 Thread.Sleep(50);
+                ChangeColor(points, ref rand);
             }
             GameOver(ref deery, points);
             Console.ReadKey();
@@ -55,20 +54,43 @@ namespace Deery
             Console.Clear();
         }
 
+        public static void IsGameOver(ref Obstacle obstacle, ref Deer deery, ref bool game)
+        {
+            if (obstacle.Cur > 103 && obstacle.Cur <= 118
+                    &&
+                    (deery.jumpingCounter < 3 || (deery.jumpingCounter == 3 && !deery.IsUp)))
+            {
+                game = false;
+            }
+        }
         public static void GameOver(ref Deer deery, decimal points)
         {
-            Console.WriteLine($"Game over :(\t\t\t\tYour points, sir: {points-1}\t\t\t\t\t\tThanks for game!");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine();
+            Console.WriteLine($"Game over :(\t\t\t\t\tYour points, sir: {points-1}\t\t\t\t\tThanks for game!");
         }
 
         public static void CatchKey(ref Deer deery)
         {
-            if (Console.KeyAvailable && !  deery.IsJumping)
+            if (Console.KeyAvailable && !deery.IsJumping)
             {
                 if (Convert.ToChar(_getch()) == ' ')
                 {
                     deery.IsJumping = true;
                     deery.IsUp = true;
                 }
+            }
+        }
+
+        public static void ChangeColor(decimal points, ref Random rand)
+        {
+            if (points % 200 == 0)
+            {
+                do
+                {
+                    Console.ForegroundColor = (ConsoleColor)colors.GetValue(rand.Next(colors.Length));
+                }
+                while (Console.ForegroundColor == ConsoleColor.Black);
             }
         }
     }
