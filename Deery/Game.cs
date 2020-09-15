@@ -17,7 +17,7 @@ namespace Deery
             Deer deery = new Deer();
             Obstacle obstacle = new Obstacle();
             Random rand = new Random();
-            decimal points = 0M;
+            decimal points = 3230M;
             bool game = true;
             StartGame(ref deery);
             while (game)
@@ -51,6 +51,7 @@ namespace Deery
             deery.Running();
             deery.Print(true, 0M);
             Console.ReadKey();
+            Console.Beep();
             Console.Clear();
         }
 
@@ -65,9 +66,10 @@ namespace Deery
         }
         public static void GameOver(ref Deer deery, decimal points)
         {
+            Console.Beep();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine();
-            Console.WriteLine($"Game over :(\t\t\t\t\tYour points, sir: {points-1}\t\t\t\t\tThanks for game!");
+            Console.WriteLine($"Game over :(\t\t\t\t\tYour points, sir: {points-1}\t\t\t\t     Thanks for playing!");
         }
 
         public static void CatchKey(ref Deer deery)

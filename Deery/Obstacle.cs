@@ -6,8 +6,8 @@ namespace Deery
     {
         public double Cur { get; set; }
         public double Speed { get; set; }
-        private int height = 4;
-        private string[] obstacle;
+        private readonly int height = 4;
+        private readonly string[] obstacle;
         private Random rand = new Random();
 
         public Obstacle()

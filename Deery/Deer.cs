@@ -42,7 +42,7 @@ namespace Deery
 
         public void Print(bool isStart, decimal points)
         {
-            Console.WriteLine(bigEmpty + (isStart ? "" : '\n' + bigEmpty));
+            Console.WriteLine(bigEmpty + (isStart ? "" : $"\n {bigEmpty}"));
             Console.WriteLine(bigEmpty + points);
             int _ = skip - jumpingCounter;
             for (int i = 0; i < _; ++i)
