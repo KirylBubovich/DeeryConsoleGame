@@ -1,3 +1,3 @@
 # DeeryConsoleGame
 Greetings my friend! This simple game was made using only C#. Enjoy!
-![Deery](https://user-images.githubusercontent.com/47569841/93176870-964cc980-f73a-11ea-959c-52986753ae93.png)
+![Deer](https://user-images.githubusercontent.com/47569841/93178911-9d290b80-f73d-11ea-9394-7b66aac4cd45.png)
