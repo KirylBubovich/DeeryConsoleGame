@@ -17,7 +17,7 @@ namespace Deery
             Deer deery = new Deer();
             Obstacle obstacle = new Obstacle();
             Random rand = new Random();
-            decimal points = 3230M;
+            decimal points = 0M;
             bool game = true;
             StartGame(ref deery);
             while (game)
