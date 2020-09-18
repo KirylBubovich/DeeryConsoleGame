@@ -37,10 +37,12 @@ namespace Deery
                 deery.Clear();
                 ++points;
                 obstacle.Print();
+                obstacle.ChangeSpeed(points);
                 IsGameOver(ref obstacle, ref deery, ref game);
-                Thread.Sleep(50);
+                Thread.Sleep(50-obstacle.Sleep);
                 ChangeColor(points, ref rand);
             }
+            Thread.Sleep(100);
             GameOver(ref deery, points);
             Console.ReadKey();
         }
@@ -57,7 +59,7 @@ namespace Deery
 
         public static void IsGameOver(ref Obstacle obstacle, ref Deer deery, ref bool game)
         {
-            if (obstacle.Cur > 105 && obstacle.Cur <= 118
+            if ((int)obstacle.Cur > 105 && (int)obstacle.Cur <= 118
                     &&
                     (deery.jumpingCounter < 3 || (deery.jumpingCounter == 3 && !deery.IsUp)))
             {
@@ -66,6 +68,10 @@ namespace Deery
         }
         public static void GameOver(ref Deer deery, decimal points)
         {
+            while (Console.KeyAvailable)
+            {
+                _getch();
+            }
             Console.Beep();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine();
